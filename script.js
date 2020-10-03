@@ -67,8 +67,8 @@ const getElementsByRange = (start, end, array) => {
 const createRangeButtons = (start, end, nbPages) => {
     parameters.btnsArray = [];
     for (let i = start; i <= nbPages && i <= end; i++) {
-    const btn = createButton(i);
-    parameters.btnsArray.push(btn);
+        const btn = createButton(i);
+        parameters.btnsArray.push(btn);
     }
     displayHTML(btnsContainer, parameters.btnsArray, true);
 };
@@ -93,9 +93,6 @@ const updateButtons = () => {
     let start = currentPage - LIMIT_ITEM;
     let end = currentPage + LIMIT_ITEM;
 
-    console.log("start: ", start);
-    console.log("end: ", end);
-
     start = start < LIMIT_ITEM - 1 ? 1 : start;
     end = start < LIMIT_ITEM - 1 ? LIMIT_PAGINATION + 1 : end;
     createRangeButtons(start, end, nbPages);
@@ -103,25 +100,20 @@ const updateButtons = () => {
 
 const displayListItems = (elements) => {
     listContainer.innerHTML = "";
-    const list = elements.map(
-    (text) => `<div class="emojis-container__item">${text}</div>`
-    );
+    const list = elements.map((text) => `<div class="emojis-container__item">${text}</div>`);
     displayHTML(listContainer, list);
 };
 
 const displayHTML = (container, elements, append) => {
     container.innerHTML = "";
     elements.forEach((item) => {
-    if (append) container.appendChild(item);
-    else container.innerHTML += item;
+        if (append) container.appendChild(item);
+        else container.innerHTML += item;
     });
 };
 
 const selectedBtn = () => {
-    const index = parameters.btnsArray.findIndex(
-    (item) => item.innerText == currentPage
-    );
-    console.log(index);
+    const index = parameters.btnsArray.findIndex((item) => item.innerText == currentPage);
     parameters.btnsArray[index].className += " selected";
 };
 
